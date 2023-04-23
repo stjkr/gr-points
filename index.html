@@ -52,8 +52,17 @@
 		</div>
 		<div class="bottom">
 			<h1> Search for a Specific Robot</h1>
-			<div class="search"><input placeholder="Enter the mint address."><button>Search</button></div>
-
+			<div class="search"><input placeholder="Enter the mint address." id="search-input"><button onclick="search()">Search</button></div>
+			<table id="search-table">
+				<thead>
+					<tr>
+						<th>Robot</th>
+						<th>Points</th>
+					</tr>
+				</thead>
+				<tbody id="search-tbody">
+				</tbody>
+			</table>
 		</div>
 	</section>
 	<div class="footer">
@@ -106,6 +115,43 @@
 
 
 			}
+			console.log(this.responseText);
+		};
+
+		xhttp.send();
+	}
+var search = function () {
+		var xhttp = new XMLHttpRequest()
+		
+		tkn = document.getElementById("search-input").value;
+
+		xhttp.open("GET", "https://api-gr.stjkr.repl.co/token/tkn=" + tkn, true);
+		xhttp.setRequestHeader("Content-Type", "application/json");
+		xhttp.setRequestHeader('Access-Control-Allow-Headers', '*');
+		xhttp.setRequestHeader('Access-Control-Allow-Origin', '*');
+
+		xhttp.onreadystatechange = function () {
+			if (this.readyState == 4 && this.status == 200) {
+				response = this.responseText;
+				var tr = document.createElement("tr");
+				var td1 = document.createElement("td");
+				var a1 = document.createElement("a");
+				a1.href = "https://magiceden.io/item-details/" + tkn;
+				a1.target = "_blank";
+				a1.innerText = tkn.substr(0, 3) + "..." + tkn.substr(41, 44);
+				td1.appendChild(a1);
+
+				var td3 = document.createElement("td");
+				td3.innerText = response;
+
+				tr.appendChild(td1);
+				tr.appendChild(td3);
+				document.getElementById("search-tbody").appendChild(tr);
+				}
+				try {
+					document.getElementById("loading").style.display = "none";
+				} catch { }
+
 			console.log(this.responseText);
 		};
 

@@ -111,6 +111,16 @@ h1{
   box-sizing: border-box;
 }
 
+@media screen and (max-width:1000px){
+  .top{
+    width: 90%;
+  }
+
+  .bottom{
+    width: 90%;
+  }
+}
+
 .bottom .search{
   height: 100%;
   outline: none;
