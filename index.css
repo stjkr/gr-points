@@ -1,0 +1,171 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&display=swap');
+
+
+html,body{
+  margin: 0;
+  padding: 0;
+  background-color: #fff;
+}
+
+.header{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding-left: 30px;
+  position: fixed;
+  height: 80px;
+  left: 0;
+  right: 0;
+  top: 0;
+  z-index: 1;
+  background: #fff;
+  box-shadow: 0 4px 8px rgba(0,0,0,.05);
+}
+
+.footer{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+  position: fixed;
+  height: 40px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+  background: #fff;
+  box-shadow: 0 -4px 8px rgba(0,0,0,.05);
+  font-family: 'Manrope';
+}
+
+.footer a{
+  color: black;
+}
+
+h1{
+  font-family: "Manrope";
+}
+
+.logo{
+  width: 226px;
+  height: 32px;
+  background-image: url(https://app.generousrobots.com/static/media/logo.591abb0c.svg) ;
+}
+
+
+.loading{
+  /* display: none; */
+  background: #fff;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.loading img{
+  border-radius: 50%;
+  width: 100px;
+  animation: spin 0.5s linear infinite;
+  border: 1px solid rgb(0, 0, 0);
+}
+
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+
+.main{
+  position: absolute;
+  top: 90px;
+  left: 0;
+  width: 100%;
+  /* height: 100%; */
+}
+
+.top{
+  width: 50%;
+  margin: auto;
+  text-align: center;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.bottom{
+  width: 50%;
+  height: 100%;
+  margin: auto;
+  text-align: center;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.bottom .search{
+  height: 100%;
+  outline: none;
+}
+
+.bottom .search input{
+  font-family: 'Manrope';
+}
+
+.bottom .search input::placeholder{
+  font-family: 'Manrope';
+}
+
+.bottom .search input:active, .bottom .search input:hover, .bottom .search input:focus{
+  outline: none;
+}
+
+.bottom .search button{
+  font-family: 'Manrope';
+}
+
+.nft{
+  /* margin: auto; */
+  width: 256px;
+  height: 300px;
+  margin: 10px;
+}
+
+.nft-image{
+  position: relative;
+  width: 256px;
+  height: 256px;
+  left: 0;
+  top: 0;
+  background-size: contain;
+  border-radius: 16px;
+  background-image: url("https://storage.googleapis.com/unrevealed-gr/0.gif");
+}
+
+table{
+  width: 100%;
+  font-family: "Manrope";
+  text-decoration: none;
+
+}
+
+thead{
+  text-align: center;
+  font-weight: 700;
+}
+
+tr td a{
+  color: black;
+}
+
+tr{
+  text-align: center;
+}
