@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="index.css">
+	<!-- <link rel="shortcut icon" href="./img/logo.png" type="image/x-icon">
+		<meta content="Etherial" property="og:title" />
+		<meta content="#000000" data-react-helmet="true" name="theme-color" />
+	
+		<meta property="og:description" content="Step into the eerie silence of this abandoned town, where the only sound you'll hear is the haunting whisper of the wind." />
+		<meta property="og:type" content="website" />
+		<meta property="og:image" content="https://i.imgur.com/dQZf5Nx.png" />
+		<meta property="og:url" content="https://etherialnft.xyz" />
+		<meta property="og:site_name" content="Splash" />
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:site" content="@etherialnft" />
+		<meta name="twitter:title" content="Etherial" />
+		<meta name="twitter:description" content="Step into the eerie silence of this abandoned town, where the only sound you'll hear is the haunting whisper of the wind." />
+		<meta name="twitter:image" content="https://i.imgur.com/dQZf5Nx.png" />
+	
+		<script src="https://kit.fontawesome.com/66aa7c98b3.js" crossorigin="anonymous"></script> -->
+
+	<title> Generous Robots Points </title>
+</head>
+
+<body>
+	<div class="loading" id="loading">
+		<img src="https://storage.googleapis.com/unrevealed-gr/0.gif">
+	</div>
+	<div class="header">
+		<div class="logo"></div>
+	</div>
+	<section class="main">
+
+		<div class="top">
+			<h1> Current Listings </h1>
+			<table id="table">
+				<thead>
+					<tr>
+						<th>Robot</th>
+						<th>Price</th>
+						<th>Points</th>
+					</tr>
+				</thead>
+				<tbody id="tbody">
+				</tbody>
+			</table>
+
+		</div>
+		<div class="bottom">
+			<h1> Search for a Specific Robot</h1>
+			<div class="search"><input placeholder="Enter the mint address."><button>Search</button></div>
+
+		</div>
+	</section>
+	<div class="footer">
+		<a href="https://twitter.com/stjpg_" target="_blank">Made by stjkr.</a>
+	</div>
+
+
+
+
+</body>
+
+</html>
+<script>
+	var load = function (start) {
+		var xhttp = new XMLHttpRequest();
+
+		xhttp.open("GET", "https://api-gr.stjkr.repl.co/listings/start=" + start, true);
+		xhttp.setRequestHeader("Content-Type", "application/json");
+		xhttp.setRequestHeader('Access-Control-Allow-Headers', '*');
+		xhttp.setRequestHeader('Access-Control-Allow-Origin', '*');
+
+		xhttp.onreadystatechange = function () {
+			if (this.readyState == 4 && this.status == 200) {
+				const response = JSON.parse(xhttp.responseText);
+				response.sort((a, b) => a.price - b.price);
+				for (let i = 0; i < response.length; i++) {
+					var tr = document.createElement("tr");
+					var td1 = document.createElement("td");
+					var a1 = document.createElement("a");
+					a1.href = "https://magiceden.io/item-details/" + response[i]["tkn"];
+					a1.target = "_blank";
+					a1.innerText = response[i]["tkn"].substr(0, 3) + "..." + response[i]["tkn"].substr(41, 44);
+					td1.appendChild(a1);
+
+
+					var td2 = document.createElement("td");
+					td2.innerText = response[i]["price"]
+
+					var td3 = document.createElement("td");
+					td3.innerText = response[i]["points"]
+
+					tr.appendChild(td1);
+					tr.appendChild(td2);
+					tr.appendChild(td3);
+					document.getElementById("tbody").appendChild(tr);
+				}
+				try {
+					document.getElementById("loading").style.display = "none";
+				} catch { }
+
+
+			}
+			console.log(this.responseText);
+		};
+
+		xhttp.send();
+	}
+
+	window.onload = function () {
+		load(0)
+	}
+</script>
