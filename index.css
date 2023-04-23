@@ -179,3 +179,7 @@ tr td a{
 tr{
   text-align: center;
 }
+
+td img{
+  width: 20px;
+}

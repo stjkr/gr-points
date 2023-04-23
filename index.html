@@ -10,7 +10,8 @@
 	<meta content="GR-POINTS" property="og:title" />
 	<meta content="#ffffff" data-react-helmet="true" name="theme-color" />
 
-	<meta property="og:description" content="View the floor of GR2.0 with their points and search for specific robots to find their total points." />
+	<meta property="og:description"
+		content="View the floor of GR2.0 with their points and search for specific robots to find their total points." />
 	<meta property="og:type" content="website" />
 	<meta property="og:image" content="https://i.imgur.com/GhVHP0g.png" />
 	<meta property="og:url" content="https://gr-points.vercel.app" />
@@ -18,7 +19,8 @@
 	<meta name="twitter:card" content="summary_large_image" />
 	<meta name="twitter:site" content="@GenerousRobots" />
 	<meta name="twitter:title" content="GenerousRobots" />
-	<meta name="twitter:description" content="View the floor of GR2.0 with their points and search for specific robots to find their total points." />
+	<meta name="twitter:description"
+		content="View the floor of GR2.0 with their points and search for specific robots to find their total points." />
 	<meta name="twitter:image" content="https://i.imgur.com/GhVHP0g.png" />
 
 	<script src="https://kit.fontawesome.com/66aa7c98b3.js" crossorigin="anonymous"></script>
@@ -52,7 +54,8 @@
 		</div>
 		<div class="bottom">
 			<h1> Search for a Specific Robot</h1>
-			<div class="search"><input placeholder="Enter the mint address." id="search-input"><button onclick="search()">Search</button></div>
+			<div class="search"><input placeholder="Enter the mint address." id="search-input"><button
+					onclick="search()">Search</button></div>
 			<table id="search-table">
 				<thead>
 					<tr>
@@ -99,10 +102,18 @@
 
 
 					var td2 = document.createElement("td");
-					td2.innerText = response[i]["price"]
+					td2.innerText = "◎" + response[i]["price"]
 
 					var td3 = document.createElement("td");
 					td3.innerText = response[i]["points"]
+
+					if (response[i]["points"] != "Unknown.") {
+						var point = document.createElement("img");
+						point.src = "point.png";
+						td3.appendChild(point);
+					}
+
+
 
 					tr.appendChild(td1);
 					tr.appendChild(td2);
@@ -120,9 +131,9 @@
 
 		xhttp.send();
 	}
-var search = function () {
+	var search = function () {
 		var xhttp = new XMLHttpRequest()
-		
+
 		tkn = document.getElementById("search-input").value;
 
 		xhttp.open("GET", "https://api-gr.stjkr.repl.co/token/tkn=" + tkn, true);
@@ -144,18 +155,25 @@ var search = function () {
 				var td3 = document.createElement("td");
 				td3.innerText = response;
 
+				if (response != "Unknown.") {
+					var point = document.createElement("img");
+					point.src = "point.png";
+					td3.appendChild(point);
+				}
+
 				tr.appendChild(td1);
 				tr.appendChild(td3);
 				document.getElementById("search-tbody").appendChild(tr);
-				}
-				try {
-					document.getElementById("loading").style.display = "none";
-				} catch { }
+			}
+			try {
+				document.getElementById("loading").style.display = "none";
+			} catch { }
 
 			console.log(this.responseText);
 		};
-
-		xhttp.send();
+		if (tkn != "") {
+			xhttp.send();
+		}
 	}
 
 	window.onload = function () {
