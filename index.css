@@ -62,7 +62,7 @@ h1{
   position: absolute;
   top: 0;
   left: 0;
-  z-index: -1;
+  z-index: 10;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -104,7 +104,6 @@ h1{
 
 .bottom{
   width: 50%;
-  height: 100%;
   margin: auto;
   text-align: center;
   padding: 20px;
@@ -142,24 +141,6 @@ h1{
   font-family: 'Manrope';
 }
 
-.nft{
-  /* margin: auto; */
-  width: 256px;
-  height: 300px;
-  margin: 10px;
-}
-
-.nft-image{
-  position: relative;
-  width: 256px;
-  height: 256px;
-  left: 0;
-  top: 0;
-  background-size: contain;
-  border-radius: 16px;
-  background-image: url("https://storage.googleapis.com/unrevealed-gr/0.gif");
-}
-
 table{
   width: 100%;
   font-family: "Manrope";
@@ -182,4 +163,9 @@ tr{
 
 td img{
   width: 20px;
+}
+
+
+.box{
+  height: 100vh;
 }
